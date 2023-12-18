@@ -22,7 +22,11 @@ class TimeWallController extends Controller
                 ->addIndexColumn()
                 ->addColumn('video_name', function ($row) {
                     return Str::title($row->video_name);
-                })                
+                })              
+                
+                ->addColumn('created_at', function ($row) {
+                    return $row->created_at->format('M d, Y/h.ia');
+                })
             
                    ->addColumn('thumbnail',function($row){
                     $img = "<img src='".url(asset($row->video_thumbnail))."' alt='' width='40' height='50'>";
@@ -52,7 +56,7 @@ class TimeWallController extends Controller
                             </form>
                         </span>';
             })
-                   ->rawColumns(['video_name','thumbnail','video','action'])
+                   ->rawColumns(['video_name','thumbnail','video','created_at','action'])
                 ->make(true);
         }
         return view('admin.timewall.list');
