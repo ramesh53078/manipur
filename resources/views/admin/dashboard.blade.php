@@ -2,7 +2,7 @@
 @section('title','Dashboard')
 @section('content')
 
-<div class="content-wrapper" style="background-image: url('{{ url('admin/assets/dist/img/Sm.jpg') }}'); background-repeat: no-repeat; background-size: cover;">
+<div class="content-wrapper" style="background-image: url('{{ url('admin/assets/dist/img/Mary.png') }}'); background-repeat: no-repeat; background-size: cover;">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
