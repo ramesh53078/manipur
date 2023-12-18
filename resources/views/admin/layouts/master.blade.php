@@ -32,9 +32,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  {{-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{url('admin/assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div> --}}
 
   <!-- Navbar -->
   @include('admin.layouts.header')
@@ -123,6 +123,7 @@
                                     "responsive": true,
                                     "lengthChange": false,
                                     "autoWidth": false,
+                                    "searching": true,
                                     "serverSide": true,
                                     "ajax": {
                                         "url": "{{ route('admin.timewall.list') }}",
@@ -138,6 +139,19 @@
                                         { "data": 'action', "name": 'action', "orderable": false, "searchable": false },
                                     ],
                                     "processing": true, // Display a loading indicator while loading data
+                                    "initComplete": function (settings, json) {
+                                      var anchorTag = $('<a>', {
+                                            href: "{{url('admin/timewall/create')}}",
+                                            class: 'btn btn-success rounded',
+                                            text: 'Add New'
+                                          });
+
+                                            // Append the anchor tag to the first col-md-10 div
+                                            $('#timewall_list_wrapper .col-md-6:eq(0)').append(anchorTag);
+
+                                      $('#timewall_list_wrapper .col-md-6:eq(0)').removeClass('col-md-6').addClass('col-md-10');
+                                      $('#timewall_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
+                                    }
                                 });
 
                                 $("#largevideowall_list").DataTable({
@@ -159,6 +173,17 @@
                                         { "data": 'action', "name": 'action', "orderable": false, "searchable": false },
                                     ],
                                     "processing": true, // Display a loading indicator while loading data
+                                    "initComplete": function (settings, json) {
+                                      var anchorTag = $('<a>', {
+                                            href: "{{url('admin/largevideowall/create')}}",
+                                            class: 'btn btn-success rounded',
+                                            text: 'Add New'
+                                          });
+                                          
+                                            $('#largevideowall_list_wrapper .col-md-6:eq(0)').append(anchorTag);
+                                            $('#largevideowall_list_wrapper .col-md-6:eq(0)').removeClass('col-md-6').addClass('col-md-10');
+                                            $('#largevideowall_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
+                                    }
                                 });
      });
 </script>
