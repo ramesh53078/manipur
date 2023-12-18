@@ -102,11 +102,11 @@ class LargeVideoWallController extends Controller
                 
                 $thumbnailImage = $request->video_name .time(). '_' . Str::random(8) . '_' . microtime(true) . '.' . $thumbnail_file->getClientOriginalExtension();
         
-                $destinationPath = 'admin/assets/largevideowall/video_thumbnails/';
+                $destinationPath = 'admin/assets/largevideowall/videothumbnails/';
 
                 $videoData = $request->video_name .time(). '_' . Str::random(8) . '_' . microtime(true) . '.' . $video_file->getClientOriginalExtension();
         
-                $videoDestinationPath = 'admin/largevideowall/assets/videos/';
+                $videoDestinationPath = 'admin/assets/largevideowall/videos/';
         
                 $request->file('video_thumbnail')->move(public_path($destinationPath), $thumbnailImage);
         
