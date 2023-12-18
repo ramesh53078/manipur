@@ -102,7 +102,7 @@ class TimeWallController extends Controller
                 
                 $thumbnailImage = $request->video_name .time(). '_' . Str::random(8) . '_' . microtime(true) . '.' . $thumbnail_file->getClientOriginalExtension();
         
-                $destinationPath = 'admin/assets/video_thumbnails/';
+                $destinationPath = 'admin/assets/videothumbnails/';
 
                 $videoData = $request->video_name .time(). '_' . Str::random(8) . '_' . microtime(true) . '.' . $video_file->getClientOriginalExtension();
         
@@ -188,7 +188,7 @@ class TimeWallController extends Controller
                 $thumbnail_file = $request->file('video_thumbnail');
                 $thumbnailImage = $request->video_name . time() . '_' . Str::random(8) . '_' . microtime(true) . '.' . $thumbnail_file->getClientOriginalExtension();
 
-                $destinationPath = 'admin/assets/video_thumbnails/';
+                $destinationPath = 'admin/assets/videothumbnails/';
                 $request->file('video_thumbnail')->move(public_path($destinationPath), $thumbnailImage);
                 $thumbnailFilePath = '/' . $destinationPath . '/' . $thumbnailImage;
 
