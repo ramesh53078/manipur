@@ -27,7 +27,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-success bg-light border-light" href="{{url('admin/timewall/create')}}" type="submit">Add New</a>
+                    <a class="btn btn-success rounded" href="{{url('admin/timewall/create')}}" type="submit">Add New</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
