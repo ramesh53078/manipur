@@ -15,20 +15,16 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-
-        // Attempt to log in the user
-        if (Auth::attempt($credentials)) {
-            // Authentication passed
-            return redirect()->intended('/admin/dashboard'); // Change this to your admin dashboard route
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->intended('/admin/dashboard'); 
         }
 
-        // Authentication failed
         return back()->withInput($request->only('email', 'remember'))->with('error','Invalid email or password');
     }
 
     public function logout()
     {
-        auth()->logout();
+        Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
 
     }

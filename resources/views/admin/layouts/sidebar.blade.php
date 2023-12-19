@@ -13,7 +13,7 @@
           <img src="{{url('admin/assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+          <a href="#" class="d-block">{{auth()->guard('admin')->user()->name}}</a>
         </div>
       </div>
 
@@ -26,6 +26,22 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.employees')}}" class="nav-link {{ request()->routeIs('admin.employees') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Employees
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.visitors')}}" class="nav-link {{ request()->routeIs('admin.visitors') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Visitors
               </p>
             </a>
           </li>

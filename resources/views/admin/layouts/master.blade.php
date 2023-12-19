@@ -185,6 +185,60 @@
                                             $('#largevideowall_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
                                     }
                                 });
+
+                                $("#employee_list").DataTable({
+                                    "responsive": true,
+                                    "lengthChange": false,
+                                    "autoWidth": false,
+                                    "serverSide": true,
+                                    "ajax": {
+                                        "url": "{{ route('admin.employees') }}",
+                                        "type": "GET", // Adjust the HTTP request method if needed
+                                        "dataType": "json", // Specify the data type you expect from the server
+                                    },
+                                    "columns": [
+                                        { "data": 'DT_RowIndex', "name": 'DT_RowIndex' },
+                                        {"data": 'name', "name": 'name'},
+                                        { "data": 'designation', "name": 'designation' },
+                                        {"data": 'employee_code', "name": 'employee_code'},
+                                        { "data": 'created_at', "name": 'created_at'},
+                                        { "data": 'updated_at', "name": 'updated_at'},
+                                        
+                                    ],
+                                    "processing": true, // Display a loading indicator while loading data
+                                    "initComplete": function (settings, json) {
+                                            
+                                            $('#employee_list_wrapper .col-md-6:eq(0)').removeClass('col-md-6').addClass('col-md-10');
+                                            $('#employee_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
+                                    }
+                                });
+
+                                $("#visitors_list").DataTable({
+                                    "responsive": true,
+                                    "lengthChange": false,
+                                    "autoWidth": false,
+                                    "serverSide": true,
+                                    "ajax": {
+                                        "url": "{{ route('admin.visitors') }}",
+                                        "type": "GET", // Adjust the HTTP request method if needed
+                                        "dataType": "json", // Specify the data type you expect from the server
+                                    },
+                                    "columns": [
+                                        { "data": 'DT_RowIndex', "name": 'DT_RowIndex' },
+                                        {"data": 'name', "name": 'name'},
+                                        { "data": 'email', "name": 'email' },
+                                        {"data": 'phone_number', "name": 'phone_number'},
+                                        { "data": 'created_at', "name": 'created_at'},
+                                        { "data": 'updated_at', "name": 'updated_at'},
+                                        
+                                    ],
+                                    "processing": true, // Display a loading indicator while loading data
+                                    "initComplete": function (settings, json) {
+                                            
+                                            $('#visitors_list_wrapper .col-md-6:eq(0)').removeClass('col-md-6').addClass('col-md-10');
+                                            $('#visitors_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
+                                    }
+                                });
      });
 </script>
 </body>

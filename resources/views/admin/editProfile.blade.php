@@ -37,14 +37,14 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputName">Name</label>
-                        <input type="text"  class="form-control  @error('name') is-invalid @enderror" name="name" value="{{auth()->user()->name}}" id="exampleInputName" placeholder="Enter Name">
+                        <input type="text"  class="form-control  @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" id="exampleInputName" placeholder="Enter Name">
                         @error('name')
                         <span id="exampleInputEmail1-error" class="error invalid-feedback">{{$message}}</span>                            
                         @enderror
                       </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" value="{{auth()->user()->email}}" class="form-control @error('email') is-invalid @enderror"  placeholder="Enter email">
+                        <input type="email" name="email" value="{{$user->email}}" class="form-control @error('email') is-invalid @enderror"  placeholder="Enter email">
                         @error('email')
                         <span id="exampleInputEmail1-error" class="error invalid-feedback">{{$message}}</span>                            
                         @enderror

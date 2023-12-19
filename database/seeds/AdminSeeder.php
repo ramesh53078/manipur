@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Admin\Admin;
 use Illuminate\Support\Facades\Hash;
 class AdminSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        Admin::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('Admin@123'),

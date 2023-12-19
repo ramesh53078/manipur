@@ -24,14 +24,18 @@ Route::get('/admin-login', function () {
 
 Route::post('/admin/authentication', 'Admin\LoginController@loginAction')->name('admin.authentication');
 
-Route::middleware(['auth'])->group(function()  {
+Route::group(['middleware' => ['admin']], function() {
     
     Route::as('admin.')->prefix('admin')->group( function() {
         Route::get('dashboard','Admin\DashboardController@index')->name('dashboard');
 
         Route::get('admin/edit/profile', function() {
-            return view('admin.editProfile');
+            $user = Auth::guard('admin')->user();
+            return view('admin.editProfile',['user' => $user]);
         })->name('edit.profile');
+
+        Route::get('employees', 'Admin\DashboardController@employeeList')->name('employees');
+        Route::get('visitors','Admin\DashboardController@vistorList')->name('visitors');
 
         Route::post('update/profile','Admin\DashboardController@updateProfile')->name('updateProfile');
         Route::get('change/password','Admin\DashboardController@changePassword')->name('change.password');
