@@ -36,6 +36,7 @@ Route::group(['middleware' => ['admin']], function() {
 
         Route::get('employees', 'Admin\DashboardController@employeeList')->name('employees');
         Route::get('visitors','Admin\DashboardController@vistorList')->name('visitors');
+        Route::get('feedback','Admin\DashboardController@feedbackList')->name('feedback');   
 
         Route::post('update/profile','Admin\DashboardController@updateProfile')->name('updateProfile');
         Route::get('change/password','Admin\DashboardController@changePassword')->name('change.password');

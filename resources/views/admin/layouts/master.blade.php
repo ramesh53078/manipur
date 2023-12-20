@@ -239,6 +239,31 @@
                                             $('#visitors_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
                                     }
                                 });
+
+                                $("#feedback_list").DataTable({
+                                    "responsive": true,
+                                    "lengthChange": false,
+                                    "autoWidth": false,
+                                    "serverSide": true,
+                                    "ajax": {
+                                        "url": "{{ route('admin.feedback') }}",
+                                        "type": "GET", // Adjust the HTTP request method if needed
+                                        "dataType": "json", // Specify the data type you expect from the server
+                                    },
+                                    "columns": [
+                                        { "data": 'DT_RowIndex', "name": 'DT_RowIndex' },
+                                        {"data": 'name', "name": 'name'},
+                                        {"data": 'description', "name": 'description'},
+                                        { "data": 'created_at', "name": 'created_at'},
+                                        
+                                    ],
+                                    "processing": true, // Display a loading indicator while loading data
+                                    "initComplete": function (settings, json) {
+                                            
+                                            $('#feedback_list_wrapper .col-md-6:eq(0)').removeClass('col-md-6').addClass('col-md-10');
+                                            $('#feedback_list_wrapper .col-md-6:last-child').removeClass('col-md-6').addClass('col-md-2');
+                                    }
+                                });
      });
 </script>
 </body>

@@ -11,6 +11,7 @@ use Auth;
 use Hash;
 use App\User;
 use App\Admin\Admin;
+use App\Admin\Feedback;
 use DataTables;
 class DashboardController extends Controller
 {
@@ -125,5 +126,28 @@ class DashboardController extends Controller
         }
 
         return view('admin.visitorsList');
+    }
+
+    public function feedbackList(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Feedback::with('user')->get();
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function ($row) {
+                    return Str::title($row->user->name);
+                })
+                ->addColumn('description', function ($row) {
+                    return Str::title($row->description);
+                })
+                ->addColumn('created_at', function ($row) {
+                    return $row->created_at->format('M d, Y/h.ia');
+                })
+                   ->rawColumns(['name','description','created_at'])
+                ->make(true);
+        }
+
+        return view('admin.feedbackList');
     }
 }

@@ -45,6 +45,16 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('admin.feedback')}}" class="nav-link {{ request()->routeIs('admin.feedback') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-comments"></i>
+              <p>
+                Feedbacks
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="{{route('admin.timewall.list')}}" class="nav-link {{ request()->routeIs('admin.timewall.list') ? 'active' : '' }}">
               <i class="nav-icon far fa-image"></i>
