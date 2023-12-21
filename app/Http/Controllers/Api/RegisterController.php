@@ -70,9 +70,10 @@ class RegisterController extends Controller
 
             if ($user) {
                 // If user exists, update the data
-                $user->update([
-                    'updated_at' => now(),
-                ]);
+                return response()->json(['statusCode' => 409,'error' => 'Alredy Registered']);
+                // $user->update([
+                //     'updated_at' => now(),
+                // ]);
             } else {
                 // If user does not exist, create a new user
                 $user = User::create($requestData);
